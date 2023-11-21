@@ -21,7 +21,7 @@ public class WebhookController {
     //     return new ResponseEntity<>("There is no service for GET method.", HttpStatus.METHOD_NOT_ALLOWED);
     // }
 
-    @PostMapping("${webhook.cloud.server.uri:webhook_cloud}")
+    @PostMapping("${webhook.cloud.server.uri:/webhook_cloud}")
     public ResponseEntity<String> cloudWebhook(@RequestBody WebhookDto dto) throws IOException {
         dto.nullReplace(dto);
         FilePrinterCloud printer = new FilePrinterCloud();
@@ -29,7 +29,7 @@ public class WebhookController {
         return new ResponseEntity<>("Receive Complete.", HttpStatus.OK);
     }
 
-    @PostMapping("${webhook.api.server.uri:webhook_api}")
+    @PostMapping("${webhook.api.server.uri:/webhook_api}")
     public ResponseEntity<String> apiWebhook(@RequestBody WebhookDto dto) throws IOException {
         dto.nullReplace(dto);
         FilePrinterApi printer = new FilePrinterApi();
